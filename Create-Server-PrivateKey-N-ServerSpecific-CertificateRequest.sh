@@ -6,8 +6,8 @@ Domain=$(hostname -d)
 Server=$(hostname)
 ServerFQDN=$(hostname -f)
 ServerIPv4=$(hostname -I)
-DigestAlgo="sha512"
-CryptoAlgo="secp521r1"
+DigestAlgo="sha384"
+CryptoAlgo="secp384r1"
 
 CertificateSigningRequest="${ServerFQDN}.CertificateSigningRequest.csr"
 ExtFile="${ServerFQDN}_extfile.cnf"
