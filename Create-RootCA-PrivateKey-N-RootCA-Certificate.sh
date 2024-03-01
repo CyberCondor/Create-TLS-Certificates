@@ -21,13 +21,13 @@ for i in {1..369};do openssl rand -writerand randfile.rand${i} -base64;done
 for i in {1..369};do cat randfile.rand${i} >> ${RandFile};done
 for i in {1..369};do rm randfile.rand${i};done
 # Make the computer say something exciting for encouragement while you make certificates
-espeak -k19 -p33 -s170 "bing bong - Done Making Random Data. Creating New Root Certificate Authority Private Key. ${DC}... is the Boss!" --stdout | aplay >/dev/null 2>&1
+espeak -k19 -p33 -s170 "Done Making Random Data. Creating New Root Certificate Authority Private Key. ${DC}... is the Boss!" --stdout | aplay >/dev/null 2>&1
 echo -e "\tDone Making Random Data.."
 
 # Make private key using OpenSSL with ECDSA and the random random data from prior
 echo -e "\tMaking Private Key for ${DC}"
 echo -e "\tThe following is asking you to enter a password for your Root CA PRIVATE KEY."
-openssl ecparam -rand ${RandFile} -name ${CryptoAlgo} -genkey | openssl ec -aes-256-cbc -out ${RootCA_PRIVATEKEY}
+openssl ecparam -rand ${RandFile} -name ${CryptoAlgo} -genkey | openssl ec -aes-256-ctr -out ${RootCA_PRIVATEKEY}
 
 # Change Private Key to Read only
 chmod 400 ${RootCA_PRIVATEKEY}
@@ -40,7 +40,7 @@ for i in {1..369};do openssl rand -writerand randfile.rand${i} -base64;done
 for i in {1..369};do cat randfile.rand${i} >> ${RandFile};done
 for i in {1..369};do rm randfile.rand${i};done
 # Make the computer say something exciting for encouragement while you make certificates
-espeak -k19 -p33 -s170 "bing bong - Done Making Random Data. Creating New Root Certificate Authority. ${DC}... is the Boss!" --stdout | aplay >/dev/null 2>&1
+espeak -k19 -p33 -s170 "Done Making Random Data. Creating New Root Certificate Authority. ${DC}... is the Boss!" --stdout | aplay >/dev/null 2>&1
 echo -e "\tDone Making Random Data.."
 
 # Generate new self-signed x.509 certificate that is valid for a specific amount of time using the defined cryptographic algorithms
