@@ -26,7 +26,7 @@ echo -e "\tDone Making Random Data"
 
 # Make private key using OpenSSL with ECDSA and the random random data from prior
 echo -e "\tMaking Private Key for ${Domain}"
-openssl ecparam -rand ${RandFile} -name ${CryptoAlgo} -genkey -out ${DomainPrivateKey} # | openssl ec -aes-256-cbc -out ${DomainPrivateKey} 
+openssl ecparam -rand ${RandFile} -name ${CryptoAlgo} -genkey -out ${DomainPrivateKey} # | openssl ec -aes-256-ctr -out ${DomainPrivateKey} 
 
 # Change Private Key to Read only
 chmod 400 ${DomainPrivateKey}
