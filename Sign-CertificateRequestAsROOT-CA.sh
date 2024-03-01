@@ -35,7 +35,7 @@ for i in {1..963};do openssl rand -writerand randfile.rand${i} -base64;done
 for i in {1..963};do cat randfile.rand${i} >> ${RandFile};done
 for i in {1..963};do rm randfile.rand${i};done
 # Make the computer say something exciting for encouragement while you make certificates
-espeak -k19 -p33 -s170 "bing bong - Done Making Random Data. Signing ${ClientFQDN}'s Certificate Signing Request..." --stdout | aplay >/dev/null 2>&1
+espeak -k19 -p33 -s170 "Done Making Random Data. Signing ${ClientFQDN}'s Certificate Signing Request..." --stdout | aplay >/dev/null 2>&1
 echo -e "\tDone Making Random Data"
 
 ####---------------------
