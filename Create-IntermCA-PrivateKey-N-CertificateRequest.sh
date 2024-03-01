@@ -23,12 +23,12 @@ for i in {1..369};do openssl rand -writerand randfile.rand${i} -base64;done
 for i in {1..369};do cat randfile.rand${i} >> ${RandFile};done
 for i in {1..369};do rm randfile.rand${i};done
 # Make the computer say something exciting for encouragement while you make certificates
-espeak -k19 -p33 -s170 "bing bong - Done Making Random Data. Creating New Private Key For ${Server}" --stdout | aplay >/dev/null 2>&1
+espeak -k19 -p33 -s170 "Done Making Random Data. Creating New Private Key For ${Server}" --stdout | aplay >/dev/null 2>&1
 echo -e "\tDone Making Random Data"
 
 # Make private key using OpenSSL with ECDSA and the random random data from prior
 echo -e "\tMaking Private Key for ${Server}"
-openssl ecparam -rand ${RandFile} -name ${CryptoAlgo} -genkey | openssl ec -aes-256-cbc -out ${IntermCAPrivateKey} 
+openssl ecparam -rand ${RandFile} -name ${CryptoAlgo} -genkey | openssl ec -aes-256-ctr -out ${IntermCAPrivateKey} 
 
 # Change Private Key to Read only
 chmod 400 ${IntermCAPrivateKey}
@@ -43,7 +43,7 @@ for i in {1..369};do openssl rand -writerand randfile.rand${i} -base64;done
 for i in {1..369};do cat randfile.rand${i} >> ${RandFile};done
 for i in {1..369};do rm randfile.rand${i};done
 # Make the computer say something exciting for encouragement while you make certificates
-espeak -k19 -p33 -s170 "bing bong - Done Making Random Data. Creating Certificate Signing Request For ${Server}" --stdout | aplay >/dev/null 2>&1
+espeak -k19 -p33 -s170 "Done Making Random Data. Creating Certificate Signing Request For ${Server}" --stdout | aplay >/dev/null 2>&1
 echo -e "\tDone Making Random Data"
 
 echo -e "\tCreating Certificate Signing Request for ${Server}"
