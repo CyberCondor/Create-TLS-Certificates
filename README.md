@@ -4,7 +4,7 @@ Create Certificate Chains Using OpenSSL
 ### Self-Signed Certificate
 
 - **Private Key Creation**: The first step for any certificate authority (CA) or entity wishing to secure communications is to generate a private key. This private key is used to create digital signatures that prove the identity of the certificate holder.
-- **Self-Signed Certificate**: A self-signed certificate is signed with the entity's own private key. However, the crucial point is that for self-signed certificates, the issuer and the subject are the same entity. This means the certificate is generated and signed by the entity itself, using its private key to sign the certificate. This process establishes the root of trust in environments where the entity acts as its own CA.
+- **Self-Signed Certificate**: A self-signed certificate is signed with the entity's own private key. Point here is that for self-signed certificates, the issuer and the subject are the same entity. This means the certificate is generated and signed by the entity itself, using its private key to sign the certificate. This process establishes the root of trust in environments where the entity acts as its own CA.
 
 ### Certificate Signing Request (CSR)
 
